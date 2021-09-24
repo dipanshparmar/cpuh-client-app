@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, SearchPage.routeName),
             color: Theme.of(context).iconTheme.color,
             tooltip: 'Search events',
           )

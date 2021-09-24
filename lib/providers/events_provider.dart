@@ -49,4 +49,12 @@ class EventsProvider with ChangeNotifier {
   Event getEvent(UniqueKey key) {
     return _events.firstWhere((event) => event.key == key);
   }
+
+  // method to find events by query
+  List<Event> findEventsByQuery(String query) {
+    return events
+        .where(
+            (event) => event.title.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  }
 }
