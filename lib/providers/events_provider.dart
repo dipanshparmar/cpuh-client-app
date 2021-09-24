@@ -86,4 +86,9 @@ class EventsProvider with ChangeNotifier {
     _recentSearches.removeRange(0, _recentSearches.length);
     notifyListeners();
   }
+
+  // method to get all the events
+  List<Event> get getAllEvents {
+    return [..._events];
+  }
 }

@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
         routes: {
           EventPage.routeName: (context) => const EventPage(),
           SearchPage.routeName: (context) => const SearchPage(),
+          AllEventsPage.routeName: (context) => const AllEventsPage(),
         },
       ),
     );
