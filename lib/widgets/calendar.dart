@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+// providers
+import '../providers/events_provider.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({
@@ -73,7 +76,19 @@ class _CalendarState extends State<Calendar> {
           color: Colors.grey,
           shape: BoxShape.circle,
         ),
+        markerDecoration: const BoxDecoration(
+          color: Colors.teal,
+          shape: BoxShape.circle,
+        ),
+        markerSize: 6,
+        markersMaxCount: 1,
       ),
+
+      // event loader (used to show the dots below dates)
+      eventLoader: (day) {
+        return Provider.of<EventsProvider>(context, listen: false)
+            .getEventsForDay(day);
+      },
     );
   }
 }
