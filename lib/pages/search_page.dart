@@ -42,7 +42,7 @@ class _SearchPageState extends State<SearchPage> {
             hintText: 'Search events...',
             suffixIcon: IconButton(
               icon: const Icon(Icons.cancel_outlined),
-              iconSize: 16,
+              iconSize: 20,
               color: Theme.of(context).iconTheme.color,
               onPressed: () {
                 _controller.clear();
