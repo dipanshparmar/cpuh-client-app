@@ -58,127 +58,132 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      body: _searchQuery.isEmpty
-          ? Consumer<EventsProvider>(
-              builder: (context, object, child) {
-                // getting the recent searches
-                final recentSearches = object.getRecentSearches;
+      body:
+          _searchQuery.isEmpty ? _buildRecentSearches() : _buildSearchResults(),
+    );
+  }
 
-                if (recentSearches.isEmpty) {
-                  return const Center(
-                    child: Text('No recent searches yet'),
-                  );
-                }
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text('Recent searches'),
-                          GestureDetector(
-                            child: const Text('clear'),
-                            onTap: () {
-                              Provider.of<EventsProvider>(context,
-                                      listen: false)
-                                  .clearRecentSearches();
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: recentSearches.length,
-                        itemBuilder: (context, index) {
-                          // getting the recentSearch
-                          final recentSearch = recentSearches[index];
+  // method to build search results
+  Consumer<EventsProvider> _buildSearchResults() {
+    return Consumer<EventsProvider>(
+      builder: (context, object, child) {
+        // getting the events
+        final events = object.findEventsByQuery(_searchQuery);
 
-                          return ListTile(
-                            title: Text(recentSearch.title),
-                            subtitle: Text(
-                              DateFormat.yMMMEd()
-                                  .format(recentSearch.day)
-                                  .toString(),
-                            ),
-                            onTap: () => Navigator.pushNamed(
-                              context,
-                              EventPage.routeName,
-                              arguments: recentSearch.key,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                );
-              },
-            )
-          : Consumer<EventsProvider>(
-              builder: (context, object, child) {
-                // getting the events
-                final events = object.findEventsByQuery(_searchQuery);
-
-                // if no events are found then inform the user
-                if (events.isEmpty) {
-                  return const Center(
-                    child: Text(
-                      'No events found!',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  );
-                }
-
-                // if events are found then display the events
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Text('Search results'),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: events.length,
-                        itemBuilder: (context, index) {
-                          // current event
-                          final event = events[index];
-
-                          return ListTile(
-                            title: Text(event.title),
-                            subtitle: Text(
-                              DateFormat.yMMMEd().format(event.day).toString(),
-                            ),
-                            onTap: () {
-                              // adding the event to the recent events
-                              Provider.of<EventsProvider>(context,
-                                      listen: false)
-                                  .addToRecentSearches(event);
-
-                              // pushing the event page
-                              Navigator.pushNamed(
-                                context,
-                                EventPage.routeName,
-                                arguments: event.key,
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                );
-              },
+        // if no events are found then inform the user
+        if (events.isEmpty) {
+          return const Center(
+            child: Text(
+              'No events found!',
+              style: TextStyle(color: Colors.grey),
             ),
+          );
+        }
+
+        // if events are found then display the events
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Text('Search results'),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  // current event
+                  final event = events[index];
+
+                  return ListTile(
+                    title: Text(event.title),
+                    subtitle: Text(
+                      DateFormat.yMMMEd().format(event.day).toString(),
+                    ),
+                    onTap: () {
+                      // adding the event to the recent events
+                      Provider.of<EventsProvider>(context, listen: false)
+                          .addToRecentSearches(event);
+
+                      // pushing the event page
+                      Navigator.pushNamed(
+                        context,
+                        EventPage.routeName,
+                        arguments: event.key,
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // method to build recent searches
+  Consumer<EventsProvider> _buildRecentSearches() {
+    return Consumer<EventsProvider>(
+      builder: (context, object, child) {
+        // getting the recent searches
+        final recentSearches = object.getRecentSearches;
+
+        if (recentSearches.isEmpty) {
+          return const Center(
+            child: Text('No recent searches yet'),
+          );
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Recent searches'),
+                  GestureDetector(
+                    child: const Text('clear'),
+                    onTap: () {
+                      Provider.of<EventsProvider>(context, listen: false)
+                          .clearRecentSearches();
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: recentSearches.length,
+                itemBuilder: (context, index) {
+                  // getting the recentSearch
+                  final recentSearch = recentSearches[index];
+
+                  return ListTile(
+                    title: Text(recentSearch.title),
+                    subtitle: Text(
+                      DateFormat.yMMMEd().format(recentSearch.day).toString(),
+                    ),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      EventPage.routeName,
+                      arguments: recentSearch.key,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
