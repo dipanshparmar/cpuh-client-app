@@ -52,6 +52,12 @@ class _CalendarState extends State<Calendar> {
 
       // on day selected
       onDaySelected: (selectedDay, focusedDay) {
+        // updating the day for the provider
+        Provider.of<EventsProvider>(context, listen: false).updateSelectedDay(
+          selectedDay,
+        );
+
+        // updating the values
         setState(() {
           _selectedDay = selectedDay;
           _focusedDay = focusedDay;
