@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 // providers
 import '../providers/providers.dart';
-
-// pages
-import './pages.dart';
 
 // widgets
 import '../widgets/event_tile.dart';
