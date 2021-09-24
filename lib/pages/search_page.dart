@@ -140,6 +140,10 @@ class _SearchPageState extends State<SearchPage> {
                         )
                       ],
                     ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    ),
                     onTap: () {
                       // adding the event to the recent events
                       Provider.of<EventsProvider>(context, listen: false)
@@ -231,6 +235,10 @@ class _SearchPageState extends State<SearchPage> {
                           DateFormat.yMd().format(recentSearch.day).toString(),
                         )
                       ],
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
                     ),
                     onTap: () => Navigator.pushNamed(
                       context,
