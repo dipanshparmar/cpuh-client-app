@@ -44,7 +44,7 @@ class EventTile extends StatelessWidget {
             ),
           ),
           if (showDate) const SizedBox(width: 10),
-          if (showDate) Text(DateFormat.yMMMd().format(event.day)),
+          if (showDate) Text(DateFormat.yMd().format(event.day)),
         ],
       ),
       trailing: const Icon(
