@@ -43,7 +43,14 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
         ),
+
+        // home page
         home: const HomePage(),
+
+        // reoutes
+        routes: {
+          EventPage.routeName: (context) => const EventPage(),
+        },
       ),
     );
   }

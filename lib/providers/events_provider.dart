@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 // models
 import '../models/models.dart';
 
+// utils
+import '../utils/utils.dart';
+
 class EventsProvider with ChangeNotifier {
   // selected date
   DateTime _selectedDay = DateTime.now(); // by default it will be set to today
 
-  // list of events
-  final List<Event> _events = [
-    Event(day: DateTime(2021, 9, 15), title: 'hello'),
-    Event(day: DateTime(2021, 9, 25), title: 'test'),
-    Event(day: DateTime(2021, 9, 26), title: 'test'),
-  ];
+  // list of events (getting from events.dart)
+  final List<Event> _events = events;
 
   // method to get events for the provided day
   List<Event> getEventsForDay(DateTime day) {
@@ -44,5 +43,10 @@ class EventsProvider with ChangeNotifier {
   void updateSelectedDay(DateTime day) {
     _selectedDay = day;
     notifyListeners(); // notifying the listeners
+  }
+
+  // method to get an event with the provided key
+  Event getEvent(UniqueKey key) {
+    return _events.firstWhere((event) => event.key == key);
   }
 }

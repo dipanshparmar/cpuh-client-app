@@ -7,6 +7,9 @@ import '../providers/providers.dart';
 // widgets
 import '../widgets/widgets.dart';
 
+// pages
+import '../pages/pages.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -64,7 +67,6 @@ class HomePage extends StatelessWidget {
                   return ListView.builder(
                     // positioning and physics
                     physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
 
                     // itemcount and itembuilder
                     itemCount: object.getEventsForSelectedDay.length,
@@ -83,9 +85,11 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         title: Text(event.title),
-                        onTap: () {
-                          
-                        },
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          EventPage.routeName,
+                          arguments: event.key,
+                        ),
                       );
                     },
                   );
