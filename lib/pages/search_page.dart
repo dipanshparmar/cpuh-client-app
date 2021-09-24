@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart'; // for date formatting
 
 // providers
 import '../providers/providers.dart';
@@ -89,6 +90,9 @@ class _SearchPageState extends State<SearchPage> {
 
                 return ListTile(
                   title: Text(event.title),
+                  subtitle: Text(
+                    DateFormat.yMMMEd().format(event.day).toString(),
+                  ),
                   onTap: () => Navigator.pushNamed(
                     context,
                     EventPage.routeName,
