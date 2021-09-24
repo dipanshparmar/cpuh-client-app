@@ -86,10 +86,13 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             const Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 20,
+                horizontal: 15,
                 vertical: 10,
               ),
-              child: Text('Search results'),
+              child: Text(
+                'Search results',
+                style: TextStyle(color: Colors.grey),
+              ),
             ),
             Expanded(
               child: ListView.builder(
@@ -134,7 +137,10 @@ class _SearchPageState extends State<SearchPage> {
 
         if (recentSearches.isEmpty) {
           return const Center(
-            child: Text('No recent searches yet'),
+            child: Text(
+              'No recent searches yet',
+              style: TextStyle(color: Colors.grey),
+            ),
           );
         }
         return Column(
@@ -142,15 +148,21 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 20,
+                horizontal: 15,
                 vertical: 10,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Recent searches'),
+                  const Text(
+                    'Recent searches',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                   GestureDetector(
-                    child: const Text('clear'),
+                    child: const Text(
+                      'clear',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     onTap: () {
                       Provider.of<EventsProvider>(context, listen: false)
                           .clearRecentSearches();
