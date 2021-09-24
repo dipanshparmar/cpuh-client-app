@@ -13,6 +13,9 @@ class EventsProvider with ChangeNotifier {
   // list of events (getting from events.dart)
   final List<Event> _events = events;
 
+  // list to hold recent searches
+  final List<Event> _recentSearches = [];
+
   // method to get events for the provided day
   List<Event> getEventsForDay(DateTime day) {
     // returning the data where the day, the month and the year matches
@@ -56,5 +59,31 @@ class EventsProvider with ChangeNotifier {
         .where(
             (event) => event.title.toLowerCase().contains(query.toLowerCase()))
         .toList();
+  }
+
+  // getter to get recent events
+  List<Event> get getRecentSearches {
+    return [..._recentSearches.reversed];
+  }
+
+  // method to add event to recent events
+  void addToRecentSearches(Event event) {
+    // remove the event first if it already exists in some other index
+    _recentSearches.removeWhere((e) => e.key == event.key);
+
+    // if the length of recent searches is equals to 6 then remove the element at first index and then add the value
+    if (_recentSearches.length == 6) {
+      _recentSearches.removeAt(0);
+    }
+
+    // add the event
+    _recentSearches.add(event);
+    notifyListeners(); // notifying listeners
+  }
+
+  // method to clear the recent searches
+  void clearRecentSearches() {
+    _recentSearches.removeRange(0, _recentSearches.length);
+    notifyListeners();
   }
 }
