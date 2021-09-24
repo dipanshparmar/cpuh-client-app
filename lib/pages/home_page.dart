@@ -80,6 +80,7 @@ class HomePage extends StatelessWidget {
                       return EventTile(
                         event: event,
                         leading: true, // this will add the bullet points
+                        showDate: false,
                       );
                     },
                   );

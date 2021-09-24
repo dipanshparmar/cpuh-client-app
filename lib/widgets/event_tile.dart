@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 // models
 import '../models/models.dart';
@@ -11,10 +12,12 @@ class EventTile extends StatelessWidget {
     Key? key,
     required this.event,
     this.leading = false,
+    this.showDate = true,
   }) : super(key: key);
 
   final Event event;
   final bool leading;
+  final bool showDate;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +33,19 @@ class EventTile extends StatelessWidget {
             )
           : null,
       title: Text(event.title),
-      subtitle: Text(
-        event.description,
-        style: const TextStyle(
-          overflow: TextOverflow.ellipsis,
-        ),
+      subtitle: Row(
+        children: [
+          Expanded(
+            child: Text(
+              event.description,
+              style: const TextStyle(
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+          if (showDate) const SizedBox(width: 10),
+          if (showDate) Text(DateFormat.yMMMd().format(event.day)),
+        ],
       ),
       trailing: const Icon(
         Icons.arrow_forward_ios,

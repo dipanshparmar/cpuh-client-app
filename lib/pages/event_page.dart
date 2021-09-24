@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 // providers
@@ -45,6 +46,17 @@ class EventPage extends StatelessWidget {
                   event.imageUrl,
                 ),
                 fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(10),
+            alignment: Alignment.centerRight,
+            child: Text(
+              'Date: ${DateFormat.yMMMEd().format(event.day)}',
+              style: const TextStyle(
+                color: Colors.grey,
+                fontStyle: FontStyle.italic,
               ),
             ),
           ),
