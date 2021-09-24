@@ -25,23 +25,33 @@ class MyApp extends StatelessWidget {
         // light theme
         theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xFFF2F2F2),
-          colorScheme: const ColorScheme.light(),
+          colorScheme: const ColorScheme.light().copyWith(
+            secondary: Colors.teal,
+          ),
           primaryColor: Colors.white,
           iconTheme: const IconThemeData(
             color: Colors.black,
           ),
           backgroundColor: Colors.black,
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionHandleColor: Colors.teal,
+          ),
         ),
 
         // dark theme
         darkTheme: ThemeData(
           scaffoldBackgroundColor: const Color(0xFF0B0F12),
-          colorScheme: const ColorScheme.dark(),
+          colorScheme: const ColorScheme.dark().copyWith(
+            secondary: Colors.teal,
+          ),
           primaryColor: Colors.black,
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
           backgroundColor: Colors.white,
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionHandleColor: Colors.teal,
+          ),
         ),
 
         // home page

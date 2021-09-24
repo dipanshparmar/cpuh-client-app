@@ -82,8 +82,8 @@ class _CalendarState extends State<Calendar> {
           color: Colors.grey,
           shape: BoxShape.circle,
         ),
-        markerDecoration: const BoxDecoration(
-          color: Colors.teal,
+        markerDecoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.secondary,
           shape: BoxShape.circle,
         ),
         markerSize: 6,
