@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart'; // for date formatting
 
 // providers
 import '../providers/providers.dart';
 
-// pages
-import './pages.dart';
+// widgets
+import '../widgets/widgets.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -121,24 +120,7 @@ class _SearchPageState extends State<SearchPage> {
                   // current event
                   final event = events[index];
 
-                  return ListTile(
-                    title: Text(event.title),
-                    subtitle: Text(
-                      DateFormat.yMMMEd().format(event.day).toString(),
-                    ),
-                    onTap: () {
-                      // adding the event to the recent events
-                      Provider.of<EventsProvider>(context, listen: false)
-                          .addToRecentSearches(event);
-
-                      // pushing the event page
-                      Navigator.pushNamed(
-                        context,
-                        EventPage.routeName,
-                        arguments: event.key,
-                      );
-                    },
-                  );
+                  return EventTile(event: event);
                 },
               ),
             ),
@@ -199,17 +181,7 @@ class _SearchPageState extends State<SearchPage> {
                   // getting the recentSearch
                   final recentSearch = recentSearches[index];
 
-                  return ListTile(
-                    title: Text(recentSearch.title),
-                    subtitle: Text(
-                      DateFormat.yMMMEd().format(recentSearch.day).toString(),
-                    ),
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      EventPage.routeName,
-                      arguments: recentSearch.key,
-                    ),
-                  );
+                  return EventTile(event: recentSearch);
                 },
               ),
             ),

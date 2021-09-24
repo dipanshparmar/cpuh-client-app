@@ -77,21 +77,9 @@ class HomePage extends StatelessWidget {
                       final event = object.getEventsForSelectedDay[index];
 
                       // returning the list tile
-                      return ListTile(
-                        leading: SizedBox(
-                          height: double.infinity,
-                          child: Icon(
-                            Icons.circle,
-                            size: 6,
-                            color: Theme.of(context).iconTheme.color,
-                          ),
-                        ),
-                        title: Text(event.title),
-                        onTap: () => Navigator.pushNamed(
-                          context,
-                          EventPage.routeName,
-                          arguments: event.key,
-                        ),
+                      return EventTile(
+                        event: event,
+                        leading: true, // this will add the bullet points
                       );
                     },
                   );
