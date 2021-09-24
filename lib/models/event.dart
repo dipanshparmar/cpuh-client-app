@@ -5,6 +5,7 @@ class Event {
   final DateTime day;
   final String title;
   final String description;
+  final String imageUrl;
 
   // constructor
   const Event({
@@ -12,5 +13,6 @@ class Event {
     required this.day,
     required this.title,
     required this.description,
+    required this.imageUrl,
   });
 }

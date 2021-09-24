@@ -39,10 +39,10 @@ class EventPage extends StatelessWidget {
           Container(
             height: 300,
             width: double.infinity,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
-                  'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+                  event.imageUrl,
                 ),
                 fit: BoxFit.cover,
               ),
