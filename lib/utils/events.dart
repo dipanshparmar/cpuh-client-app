@@ -18,7 +18,7 @@ final events = [
   ),
   Event(
     key: UniqueKey(),
-    day: DateTime(_currentYear, 9, 25),
+    day: DateTime(_currentYear, 9, 15),
     title: 'test',
     description: 'this is a demo description',
     imageUrl:
@@ -26,7 +26,31 @@ final events = [
   ),
   Event(
     key: UniqueKey(),
-    day: DateTime(_currentYear, 9, 26),
+    day: DateTime(_currentYear, 9, 15),
+    title: 'test',
+    description: 'this is a demo description',
+    imageUrl:
+        'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  ),
+  Event(
+    key: UniqueKey(),
+    day: DateTime(_currentYear, 9, 15),
+    title: 'test',
+    description: 'this is a demo description',
+    imageUrl:
+        'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  ),
+  Event(
+    key: UniqueKey(),
+    day: DateTime(_currentYear, 9, 15),
+    title: 'test',
+    description: 'this is a demo description',
+    imageUrl:
+        'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  ),
+  Event(
+    key: UniqueKey(),
+    day: DateTime(_currentYear, 9, 15),
     title: 'test',
     description: 'this is also a demo description now',
     imageUrl:
