@@ -83,6 +83,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         title: Text(event.title),
+                        onTap: () {
+                          
+                        },
                       );
                     },
                   );
