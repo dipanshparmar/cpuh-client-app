@@ -7,6 +7,9 @@ import '../providers/providers.dart';
 // widgets
 import '../widgets/event_tile.dart';
 
+// pages
+import './pages.dart';
+
 class AllEventsPage extends StatelessWidget {
   const AllEventsPage({Key? key}) : super(key: key);
 
@@ -30,6 +33,13 @@ class AllEventsPage extends StatelessWidget {
           'All events',
           style: TextStyle(color: Theme.of(context).backgroundColor),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: Theme.of(context).iconTheme.color,
+            onPressed: () => Navigator.pushNamed(context, SearchPage.routeName),
+          )
+        ],
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
