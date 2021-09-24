@@ -21,6 +21,13 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   // this will hold the search field query
   String _searchQuery = '';
+  final _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +37,23 @@ class _SearchPageState extends State<SearchPage> {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: TextField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             border: InputBorder.none,
             hintText: 'Search events...',
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.cancel_outlined),
+              iconSize: 16,
+              color: Theme.of(context).iconTheme.color,
+              onPressed: () {
+                _controller.clear();
+                setState(() {
+                  _searchQuery = '';
+                });
+              },
+              tooltip: 'Clear search field',
+            ),
           ),
+          controller: _controller,
           cursorColor: Colors.teal,
           autofocus: true,
           onChanged: (value) {
