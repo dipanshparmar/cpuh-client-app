@@ -23,9 +23,13 @@ class AllEventsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Theme.of(context).iconTheme.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('All events'),
+        title: Text(
+          'All events',
+          style: TextStyle(color: Theme.of(context).backgroundColor),
+        ),
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
