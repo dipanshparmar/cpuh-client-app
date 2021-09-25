@@ -21,13 +21,6 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   // this will hold the search field query
   String _searchQuery = '';
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +30,10 @@ class _SearchPageState extends State<SearchPage> {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: TextField(
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: 'Search events...',
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.cancel_outlined),
-              iconSize: 20,
-              color: Theme.of(context).iconTheme.color,
-              onPressed: () {
-                _controller.clear();
-                setState(() {
-                  _searchQuery = '';
-                });
-              },
-              tooltip: 'Clear search field',
-            ),
           ),
-          controller: _controller,
           cursorColor: Colors.teal,
           autofocus: true,
           onChanged: (value) {
@@ -78,8 +58,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      body:
-          _searchQuery.isEmpty ? _buildRecentSearches() : _buildSearchResults(),
+      body: _searchQuery.isNotEmpty ? _buildSearchResults() : const Text(''),
     );
   }
 
@@ -144,106 +123,10 @@ class _SearchPageState extends State<SearchPage> {
                       Icons.arrow_forward_ios,
                       size: 15,
                     ),
-                    onTap: () {
-                      // adding the event to the recent events
-                      Provider.of<EventsProvider>(context, listen: false)
-                          .addToRecentSearches(event);
-
-                      // pushing the event page
-                      Navigator.pushNamed(
-                        context,
-                        EventPage.routeName,
-                        arguments: event.key,
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // method to build recent searches
-  Consumer<EventsProvider> _buildRecentSearches() {
-    return Consumer<EventsProvider>(
-      builder: (context, object, child) {
-        // getting the recent searches
-        final recentSearches = object.getRecentSearches;
-
-        if (recentSearches.isEmpty) {
-          return const Center(
-            child: Text(
-              'No recent searches yet',
-              style: TextStyle(color: Colors.grey),
-            ),
-          );
-        }
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Recent searches',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  GestureDetector(
-                    child: const Text(
-                      'clear',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    onTap: () {
-                      Provider.of<EventsProvider>(context, listen: false)
-                          .clearRecentSearches();
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: recentSearches.length,
-                itemBuilder: (context, index) {
-                  // getting the recentSearch
-                  final recentSearch = recentSearches[index];
-
-                  return ListTile(
-                    title: Text(recentSearch.title),
-                    subtitle: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            recentSearch.description,
-                            style: const TextStyle(
-                                overflow: TextOverflow.ellipsis),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          DateFormat.yMd().format(recentSearch.day).toString(),
-                        )
-                      ],
-                    ),
-                    trailing: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                    ),
                     onTap: () => Navigator.pushNamed(
                       context,
                       EventPage.routeName,
-                      arguments: recentSearch.key,
+                      arguments: event.key,
                     ),
                   );
                 },
