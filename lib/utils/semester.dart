@@ -1,0 +1,1 @@
+enum Semester { first, second }
