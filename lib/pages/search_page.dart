@@ -137,7 +137,30 @@ class _SearchPageState extends State<SearchPage> {
                   final event = events[index];
 
                   return ListTile(
-                    title: Text(event.title),
+                    onLongPress: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          content: Text(
+                            event.title,
+                            style: TextStyle(
+                                color: Theme.of(context).backgroundColor),
+                          ),
+                          action: SnackBarAction(
+                            label: 'Close',
+                            textColor: Theme.of(context).colorScheme.secondary,
+                            onPressed: () {
+                              ScaffoldMessenger.of(context)
+                                  .removeCurrentSnackBar();
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                    title: Text(
+                      event.title,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     subtitle: Row(
                       children: [
                         Expanded(

@@ -22,6 +22,24 @@ class EventTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            content: Text(
+              event.title,
+              style: TextStyle(color: Theme.of(context).backgroundColor),
+            ),
+            action: SnackBarAction(
+              label: 'Close',
+              textColor: Theme.of(context).colorScheme.secondary,
+              onPressed: () {
+                ScaffoldMessenger.of(context).removeCurrentSnackBar();
+              },
+            ),
+          ),
+        );
+      },
       leading: leading
           ? SizedBox(
               height: double.infinity,
@@ -32,7 +50,10 @@ class EventTile extends StatelessWidget {
               ),
             )
           : null,
-      title: Text(event.title),
+      title: Text(
+        event.title,
+        overflow: TextOverflow.ellipsis,
+      ),
       subtitle: Row(
         children: [
           Expanded(
