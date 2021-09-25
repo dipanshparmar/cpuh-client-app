@@ -30,7 +30,8 @@ class _CalendarState extends State<Calendar> {
     return TableCalendar(
       // initial configuration
       focusedDay: _focusedDay,
-      firstDay: DateTime(DateTime.now().year),
+      firstDay: DateTime(DateTime.now().year -
+          1), // starting the calendar from the previous year e.g. 2020 (previous year) - 2021 (current year)
       lastDay: DateTime(DateTime.now().year, 12),
 
       // header style
