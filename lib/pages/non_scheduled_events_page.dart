@@ -48,6 +48,7 @@ class NonScheduledEventsPage extends StatelessWidget {
           final nonScheduledEvents = object.getNonScheduledEvents;
 
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: nonScheduledEvents.length,
             itemBuilder: (context, index) {
               // getting the current event

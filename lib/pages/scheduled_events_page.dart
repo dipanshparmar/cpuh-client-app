@@ -48,6 +48,7 @@ class ScheduledEventsPage extends StatelessWidget {
           final scheduledEvents = object.getScheduledEvents;
 
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: scheduledEvents.length,
             itemBuilder: (context, index) {
               // getting the current event
