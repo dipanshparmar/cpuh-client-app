@@ -16,27 +16,29 @@ class EventsProvider with ChangeNotifier {
   // method to get events for the provided day
   List<Event> getEventsForDay(DateTime day) {
     // returning the data where the day, the month and the year matches
-    return _events
-        .where(
-          (event) =>
-              event.day.day == day.day &&
-              event.day.month == day.month &&
-              event.day.year == day.year,
-        )
-        .toList();
+    return _events.where((event) {
+      if (event.day != null) {
+        return event.day!.day == day.day &&
+            event.day!.month == day.month &&
+            event.day!.year == day.year;
+      } else {
+        return false;
+      }
+    }).toList();
   }
 
   // method to get events for the _selectedDay
   List<Event> get getEventsForSelectedDay {
     // returning the data where the day, the month and the year matches
-    return _events
-        .where(
-          (event) =>
-              event.day.day == _selectedDay.day &&
-              event.day.month == _selectedDay.month &&
-              event.day.year == _selectedDay.year,
-        )
-        .toList();
+    return _events.where((event) {
+      if (event.day != null) {
+        return event.day!.day == _selectedDay.day &&
+            event.day!.month == _selectedDay.month &&
+            event.day!.year == _selectedDay.year;
+      } else {
+        return false;
+      }
+    }).toList();
   }
 
   // method to update the selected date
@@ -58,8 +60,36 @@ class EventsProvider with ChangeNotifier {
         .toList();
   }
 
+  // method to find scheduled events by query
+  List<Event> findScheduledEventsByQuery(String query) {
+    return events
+        .where((event) =>
+            event.title.toLowerCase().contains(query.toLowerCase()) &&
+            event.day != null)
+        .toList();
+  }
+
+  // method to find non scheduled events by query
+  List<Event> findNonScheduledEventsByQuery(String query) {
+    return events
+        .where((event) =>
+            event.title.toLowerCase().contains(query.toLowerCase()) &&
+            event.day == null)
+        .toList();
+  }
+
   // method to get all the events
   List<Event> get getAllEvents {
     return [..._events];
+  }
+
+  // method to get the scheduled events
+  List<Event> get getScheduledEvents {
+    return events.where((event) => event.day != null).toList();
+  }
+
+  // method to get the non scheduled events
+  List<Event> get getNonScheduledEvents {
+    return events.where((event) => event.day == null).toList();
   }
 }

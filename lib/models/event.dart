@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Event {
   final UniqueKey key;
-  final DateTime day;
+  final DateTime? day;
   final String title;
   final String description;
   final String imageUrl;
@@ -10,7 +10,7 @@ class Event {
   // constructor
   const Event({
     required this.key,
-    required this.day,
+    this.day,
     required this.title,
     required this.description,
     required this.imageUrl,

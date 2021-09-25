@@ -65,4 +65,11 @@ final events = [
     imageUrl:
         'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
   ),
+  Event(
+    key: UniqueKey(),
+    title: 'Null test',
+    description: 'This is just a null test',
+    imageUrl:
+        'https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+  ),
 ];

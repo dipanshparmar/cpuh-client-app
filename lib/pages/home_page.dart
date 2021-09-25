@@ -10,6 +10,9 @@ import '../widgets/widgets.dart';
 // pages
 import '../pages/pages.dart';
 
+// utils
+import '../utils/search_type.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -30,7 +33,11 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () => Navigator.pushNamed(context, SearchPage.routeName),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              SearchPage.routeName,
+              arguments: SearchType.allEvents,
+            ),
             color: Theme.of(context).iconTheme.color,
             tooltip: 'Search events',
           )

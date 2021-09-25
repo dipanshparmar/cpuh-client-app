@@ -33,6 +33,28 @@ class MyDrawer extends StatelessWidget {
               AllEventsPage.routeName,
             ),
           ),
+          ListTile(
+            leading: Icon(
+              Icons.schedule_outlined,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            title: const Text('Scheduled events'),
+            onTap: () => Navigator.pushNamed(
+              context,
+              ScheduledEventsPage.routeName,
+            ),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.event_busy,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            title: const Text('Non scheduled events'),
+            onTap: () => Navigator.pushNamed(
+              context,
+              NonScheduledEventsPage.routeName,
+            ),
+          ),
         ],
       ),
     );

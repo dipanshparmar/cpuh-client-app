@@ -53,7 +53,7 @@ class EventPage extends StatelessWidget {
             margin: const EdgeInsets.all(10),
             alignment: Alignment.centerRight,
             child: Text(
-              'Date: ${DateFormat.yMMMEd().format(event.day)}',
+              'Date: ${event.day != null ? DateFormat.yMMMEd().format(event.day!) : 'To be notified later'}',
               style: const TextStyle(
                 color: Colors.grey,
                 fontStyle: FontStyle.italic,

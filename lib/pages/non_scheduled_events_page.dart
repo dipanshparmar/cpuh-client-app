@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/providers.dart';
 
 // widgets
-import '../widgets/event_tile.dart';
+import '../widgets/widgets.dart';
 
 // pages
 import './pages.dart';
@@ -13,27 +13,21 @@ import './pages.dart';
 // utils
 import '../utils/search_type.dart';
 
-class AllEventsPage extends StatelessWidget {
-  const AllEventsPage({Key? key}) : super(key: key);
+class NonScheduledEventsPage extends StatelessWidget {
+  const NonScheduledEventsPage({Key? key}) : super(key: key);
 
-  // route name
-  static const routeName = '/all-events';
+  // routename
+  static const routeName = '/non-scheduled-events-page';
 
   @override
   Widget build(BuildContext context) {
-    // events provider
-    final eventsProvider = Provider.of<EventsProvider>(context, listen: false);
-
-    // getting the events
-    final events = eventsProvider.getAllEvents;
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Theme.of(context).iconTheme.color),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'All events',
+          'Non scheduled events',
           style: TextStyle(color: Theme.of(context).backgroundColor),
         ),
         actions: [
@@ -43,19 +37,26 @@ class AllEventsPage extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(
               context,
               SearchPage.routeName,
-              arguments: SearchType.allEvents,
+              arguments: SearchType.nonScheduledEvents,
             ),
           )
         ],
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          // current event
-          final event = events[index];
+      body: Consumer<EventsProvider>(
+        builder: (context, object, child) {
+          // getting the scheduled events
+          final nonScheduledEvents = object.getNonScheduledEvents;
 
-          return EventTile(event: event);
+          return ListView.builder(
+            itemCount: nonScheduledEvents.length,
+            itemBuilder: (context, index) {
+              // getting the current event
+              final event = nonScheduledEvents[index];
+
+              // returning the event tile
+              return EventTile(event: event);
+            },
+          );
         },
       ),
     );

@@ -8,6 +8,12 @@ import '../providers/providers.dart';
 // pages
 import './pages.dart';
 
+// utils
+import '../utils/search_type.dart';
+
+// models
+import '../models/event.dart';
+
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
@@ -24,15 +30,29 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the search type
+    final searchType = ModalRoute.of(context)!.settings.arguments as SearchType;
+
+    // this will store the hint text
+    String hintText = 'Search events...';
+
+    // deciding the hint text according to the search type
+    // no if for SearchType.allEvents because the by default hintText is sufficient for that
+    if (searchType == SearchType.scheduledEvents) {
+      hintText = 'Search scheduled events...';
+    } else if (searchType == SearchType.nonScheduledEvents) {
+      hintText = 'Search non-scheduled events...';
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: TextField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: 'Search events...',
+            hintText: hintText,
           ),
           cursorColor: Colors.teal,
           autofocus: true,
@@ -58,23 +78,39 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      body: _searchQuery.isNotEmpty ? _buildSearchResults() : const Text(''),
+      body: _searchQuery.isNotEmpty
+          ? _buildSearchResults(searchType)
+          : const Text(''),
     );
   }
 
   // method to build search results
-  Consumer<EventsProvider> _buildSearchResults() {
+  Consumer<EventsProvider> _buildSearchResults(SearchType searchType) {
     return Consumer<EventsProvider>(
       builder: (context, object, child) {
-        // getting the events
-        final events = object.findEventsByQuery(_searchQuery);
+        // variable to store the events
+        List<Event> events;
+
+        // variable to store the no events found message
+        String noEventsFoundMessage = 'No events found!';
+
+        // storing the events and the no events found message according to the search type
+        if (searchType == SearchType.allEvents) {
+          events = object.findEventsByQuery(_searchQuery);
+        } else if (searchType == SearchType.scheduledEvents) {
+          events = object.findScheduledEventsByQuery(_searchQuery);
+          noEventsFoundMessage = 'No scheduled events found!';
+        } else {
+          events = object.findNonScheduledEventsByQuery(_searchQuery);
+          noEventsFoundMessage = 'No non-scheduled events found!';
+        }
 
         // if no events are found then inform the user
         if (events.isEmpty) {
-          return const Center(
+          return Center(
             child: Text(
-              'No events found!',
-              style: TextStyle(color: Colors.grey),
+              noEventsFoundMessage,
+              style: const TextStyle(color: Colors.grey),
             ),
           );
         }
@@ -114,9 +150,11 @@ class _SearchPageState extends State<SearchPage> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          DateFormat.yMd().format(event.day).toString(),
-                        )
+                        if (event.day !=
+                            null) // if date is not null then show the date
+                          Text(
+                            DateFormat.yMd().format(event.day!).toString(),
+                          )
                       ],
                     ),
                     trailing: const Icon(
