@@ -138,6 +138,7 @@ class _SearchPageState extends State<SearchPage> {
 
                   return ListTile(
                     onLongPress: () {
+                      ScaffoldMessenger.of(context).removeCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Theme.of(context).primaryColor,
