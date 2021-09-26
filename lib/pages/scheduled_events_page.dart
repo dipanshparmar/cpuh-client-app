@@ -11,7 +11,7 @@ import '../widgets/event_tile.dart';
 import './pages.dart';
 
 // utils
-import '../utils/search_type.dart';
+import '../utils/utils.dart';
 
 class ScheduledEventsPage extends StatelessWidget {
   const ScheduledEventsPage({Key? key}) : super(key: key);

@@ -11,7 +11,7 @@ import '../widgets/widgets.dart';
 import './pages.dart';
 
 // utils
-import '../utils/search_type.dart';
+import '../utils/utils.dart';
 
 class NonScheduledEventsPage extends StatelessWidget {
   const NonScheduledEventsPage({Key? key}) : super(key: key);

@@ -11,7 +11,7 @@ import '../widgets/widgets.dart';
 import '../pages/pages.dart';
 
 // utils
-import '../utils/search_type.dart';
+import '../utils/utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
