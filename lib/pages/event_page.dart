@@ -5,9 +5,6 @@ import 'package:provider/provider.dart';
 // providers
 import '../providers/providers.dart';
 
-// utils
-import '../utils/semester.dart';
-
 class EventPage extends StatelessWidget {
   const EventPage({Key? key}) : super(key: key);
 
@@ -54,25 +51,15 @@ class EventPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  event.semester == Semester.first
-                      ? '1st semester'
-                      : '2nd semester',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
+            child: Container(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'Date: ${event.day != null ? DateFormat.yMMMEd().format(event.day!) : 'To be notified later'}',
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic,
                 ),
-                Text(
-                  'Date: ${event.day != null ? DateFormat.yMMMEd().format(event.day!) : 'To be notified later'}',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontStyle: FontStyle.italic,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
           Container(

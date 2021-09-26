@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 // models
 import '../models/models.dart';
 
-// utils
-import '../utils/semester.dart';
-
 // temporary variables
 const desc = 'This is a description for the event';
 const imageUrl = 'https://bit.ly/3o6TaLL';
@@ -20,7 +17,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 7, 30),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -28,7 +24,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 9, 16),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -36,7 +31,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 8, 1),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -44,14 +38,12 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 9, 28),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
     title: 'Convocation',
     description: desc,
     imageUrl: imageUrl,
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -59,14 +51,12 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 9, 17),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
     title: 'Two unit tests',
     description: 'At the end of Unit 1 and Unit 2',
     imageUrl: imageUrl,
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -74,7 +64,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 11, 10),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -82,7 +71,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 11, 20),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -90,7 +78,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 11, 25),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -98,7 +85,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2020, 12, 16),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -106,7 +92,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 1, 4),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -114,7 +99,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 2, 11),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -122,7 +106,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 3, 3),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -130,7 +113,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 3, 18),
-    semester: Semester.first,
   ),
   Event(
     key: UniqueKey(),
@@ -138,7 +120,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 3, 18),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -146,7 +127,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 30, 19),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -154,28 +134,24 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 4, 27),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
     title: 'Two unit tests',
     description: 'At the end of the Unit 1 and Unit 2',
     imageUrl: imageUrl,
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
     title: 'Innovation Day (Final evaluation of project)',
     description: desc,
     imageUrl: imageUrl,
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
     title: 'Annual Cultural Festival - Annant',
     description: desc,
     imageUrl: imageUrl,
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -183,7 +159,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 7, 14),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -191,7 +166,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 7, 20),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -199,7 +173,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 8, 11),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -207,7 +180,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 8, 11),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -215,7 +187,6 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 8, 16),
-    semester: Semester.second,
   ),
   Event(
     key: UniqueKey(),
@@ -223,6 +194,5 @@ List<Event> events = [
     description: desc,
     imageUrl: imageUrl,
     day: DateTime(2021, 8, 23),
-    semester: Semester.second,
   ),
 ];
