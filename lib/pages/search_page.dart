@@ -167,8 +167,7 @@ class _SearchPageState extends State<SearchPage> {
                         Expanded(
                           child: Text(
                             event.description,
-                            style: const TextStyle(
-                                overflow: TextOverflow.ellipsis),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         const SizedBox(

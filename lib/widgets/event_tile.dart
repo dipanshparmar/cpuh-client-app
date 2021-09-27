@@ -60,9 +60,7 @@ class EventTile extends StatelessWidget {
           Expanded(
             child: Text(
               event.description,
-              style: const TextStyle(
-                overflow: TextOverflow.ellipsis,
-              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           if (showDate) const SizedBox(width: 10),
