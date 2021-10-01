@@ -5,6 +5,9 @@ import 'package:table_calendar/table_calendar.dart';
 // providers
 import '../providers/events_provider.dart';
 
+// widgets
+import './widgets.dart';
+
 class Calendar extends StatefulWidget {
   const Calendar({
     Key? key,
@@ -27,6 +30,9 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the height
+    final height = MediaQuery.of(context).size.height;
+
     return TableCalendar(
       // initial configuration
       focusedDay: _focusedDay,
@@ -64,6 +70,44 @@ class _CalendarState extends State<Calendar> {
           _selectedDay = selectedDay;
           _focusedDay = focusedDay;
         });
+
+        // pushing the events for a day if the height is less than 600
+        if (height < 600)
+          showModalBottomSheet(
+            isDismissible: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            context: context,
+            builder: (context) {
+              return Container(
+                height: height / 2, // half of the screen size
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        height: 5,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).backgroundColor.withOpacity(.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    Expanded(child: EventsForTheDay()),
+                  ],
+                ),
+              );
+            },
+          );
       },
 
       // selected day predicate
