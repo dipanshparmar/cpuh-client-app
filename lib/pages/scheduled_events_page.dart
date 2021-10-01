@@ -47,17 +47,21 @@ class ScheduledEventsPage extends StatelessWidget {
           // getting the scheduled events
           final scheduledEvents = object.getScheduledEvents;
 
-          return ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: scheduledEvents.length,
-            itemBuilder: (context, index) {
-              // getting the current event
-              final event = scheduledEvents[index];
+          return scheduledEvents.isEmpty
+              ? const Center(
+                  child: Text('No scheduled events yet!'),
+                )
+              : ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: scheduledEvents.length,
+                  itemBuilder: (context, index) {
+                    // getting the current event
+                    final event = scheduledEvents[index];
 
-              // returning the event tile
-              return EventTile(event: event);
-            },
-          );
+                    // returning the event tile
+                    return EventTile(event: event);
+                  },
+                );
         },
       ),
     );

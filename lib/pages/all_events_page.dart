@@ -48,16 +48,20 @@ class AllEventsPage extends StatelessWidget {
           )
         ],
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          // current event
-          final event = events[index];
+      body: events.isEmpty
+          ? const Center(
+              child: Text('No events yet!'),
+            )
+          : ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: events.length,
+              itemBuilder: (context, index) {
+                // current event
+                final event = events[index];
 
-          return EventTile(event: event);
-        },
-      ),
+                return EventTile(event: event);
+              },
+            ),
     );
   }
 }

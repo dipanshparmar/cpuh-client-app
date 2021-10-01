@@ -47,17 +47,21 @@ class NonScheduledEventsPage extends StatelessWidget {
           // getting the scheduled events
           final nonScheduledEvents = object.getNonScheduledEvents;
 
-          return ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: nonScheduledEvents.length,
-            itemBuilder: (context, index) {
-              // getting the current event
-              final event = nonScheduledEvents[index];
+          return nonScheduledEvents.isEmpty
+              ? const Center(
+                  child: Text('No non scheduled events yet!'),
+                )
+              : ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: nonScheduledEvents.length,
+                  itemBuilder: (context, index) {
+                    // getting the current event
+                    final event = nonScheduledEvents[index];
 
-              // returning the event tile
-              return EventTile(event: event);
-            },
-          );
+                    // returning the event tile
+                    return EventTile(event: event);
+                  },
+                );
         },
       ),
     );
