@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // getting the height of the device
     final height = MediaQuery.of(context).size.height;
-    print(height);
 
     return Scaffold(
       drawer: const MyDrawer(),
@@ -60,8 +59,8 @@ class HomePage extends StatelessWidget {
   Widget _buildEvents() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
+      children: const [
+        Padding(
           padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
           child: Text(
             'Events',
@@ -71,7 +70,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         Expanded(

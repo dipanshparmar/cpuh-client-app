@@ -72,11 +72,11 @@ class _CalendarState extends State<Calendar> {
         });
 
         // pushing the events for a day if the height is less than 600
-        if (height < 600)
+        if (height < 600) {
           showModalBottomSheet(
             isDismissible: true,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
@@ -84,7 +84,7 @@ class _CalendarState extends State<Calendar> {
             ),
             context: context,
             builder: (context) {
-              return Container(
+              return SizedBox(
                 height: height / 2, // half of the screen size
                 child: Column(
                   children: [
@@ -102,12 +102,15 @@ class _CalendarState extends State<Calendar> {
                         ),
                       ),
                     ),
-                    Expanded(child: EventsForTheDay()),
+                    const Expanded(
+                      child: EventsForTheDay(),
+                    ),
                   ],
                 ),
               );
             },
           );
+        }
       },
 
       // selected day predicate
