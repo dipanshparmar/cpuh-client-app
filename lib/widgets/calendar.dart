@@ -120,6 +120,11 @@ class _CalendarState extends State<Calendar> {
 
       // calendar styles
       calendarStyle: CalendarStyle(
+        holidayTextStyle: const TextStyle(
+          color: Colors.red,
+        ),
+        // overriding the default configs
+        holidayDecoration: const BoxDecoration(),
         selectedTextStyle: TextStyle(
           color: Theme.of(context).primaryColor,
         ),
@@ -138,6 +143,16 @@ class _CalendarState extends State<Calendar> {
         markerSize: 6,
         markersMaxCount: 1,
       ),
+
+      // used to define holiday dates
+      holidayPredicate: (day) {
+        // marking all the days on sunday as holiday
+        if (day.weekday == DateTime.sunday) {
+          return true;
+        }
+
+        return false;
+      },
 
       // event loader (used to show the dots below dates)
       eventLoader: (day) {
