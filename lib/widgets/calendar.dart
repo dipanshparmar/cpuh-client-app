@@ -121,7 +121,7 @@ class _CalendarState extends State<Calendar> {
       // calendar styles
       calendarStyle: CalendarStyle(
         holidayTextStyle: TextStyle(
-          color: Colors.red.withOpacity(.5),
+          color: Colors.red.withOpacity(.4),
         ),
         // overriding the default configs
         holidayDecoration: const BoxDecoration(),
