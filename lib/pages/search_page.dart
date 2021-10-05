@@ -131,6 +131,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
             Expanded(
               child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 itemCount: events.length,
                 itemBuilder: (context, index) {
                   // current event
