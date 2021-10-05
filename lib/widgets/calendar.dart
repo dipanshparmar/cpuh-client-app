@@ -124,7 +124,9 @@ class _CalendarState extends State<Calendar> {
           color: Colors.red.withOpacity(.4),
         ),
         // overriding the default configs
-        holidayDecoration: const BoxDecoration(),
+        holidayDecoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
         selectedTextStyle: TextStyle(
           color: Theme.of(context).primaryColor,
         ),
