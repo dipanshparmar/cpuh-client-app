@@ -60,7 +60,7 @@ class EventPage extends StatelessWidget {
               // creating the share message
               // if event is today then show today if not then if there is a date then display that date else display nothing
               final message =
-                  'Check out the event \'${event.title}\' happening in Career Point University Hamirpur ${isToday ? 'today' : event.day != null ? 'on ${DateFormat.yMMMd().format(event.day!)}' : ''}: <url>';
+                  'Check out the event \'${event.title}\' happening in Career Point University Hamirpur ${isToday ? 'today' : event.day != null ? 'on ${DateFormat.yMMMd().format(event.day!)}' : ''}\n\nDownload the app to see all the events: <url>';
 
               // Sharing the message
               Share.share(message);
