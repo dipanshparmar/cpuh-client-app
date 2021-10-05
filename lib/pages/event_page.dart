@@ -12,9 +12,6 @@ class EventPage extends StatelessWidget {
   // route name
   static const String routeName = '/event-page';
 
-  // holding the default image
-  final _defaultImageUrl = 'assets/images/default.png';
-
   @override
   Widget build(BuildContext context) {
     // getting the key of the event
@@ -81,7 +78,7 @@ class EventPage extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  event.imageUrl ?? _defaultImageUrl,
+                  event.imageUrl,
                 ),
                 fit: BoxFit.cover,
               ),

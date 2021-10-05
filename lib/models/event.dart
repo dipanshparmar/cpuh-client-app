@@ -5,14 +5,14 @@ class Event {
   final DateTime? day;
   final String title;
   final String description;
-  final String? imageUrl;
+  final String imageUrl;
 
   // constructor
   const Event({
     required this.key,
     this.day,
     required this.title,
-    required this.description,
-    this.imageUrl,
+    this.description = 'This event has no description',
+    this.imageUrl = 'assets/images/default.png',
   });
 }
