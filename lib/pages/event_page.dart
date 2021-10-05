@@ -37,6 +37,7 @@ class EventPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.send),
+            color: Theme.of(context).iconTheme.color,
             onPressed: () {
               // getting today
               DateTime today = DateTime.now();
