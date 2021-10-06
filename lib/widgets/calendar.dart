@@ -148,12 +148,7 @@ class _CalendarState extends State<Calendar> {
 
       // used to define holiday dates
       holidayPredicate: (day) {
-        // marking all the days on sunday as holiday
-        if (day.weekday == DateTime.sunday) {
-          return true;
-        }
-
-        return false;
+        return day.weekday == DateTime.sunday;
       },
 
       // event loader (used to show the dots below dates)
