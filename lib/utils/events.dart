@@ -30,7 +30,6 @@ List<Event> events = [
   Event(
     key: UniqueKey(),
     title: 'Convocation',
-    imageUrl: 'assets/images/convocation.jpg',
   ),
   Event(
     key: UniqueKey(),
@@ -40,7 +39,6 @@ List<Event> events = [
   Event(
     key: UniqueKey(),
     title: 'Two unit tests',
-    description: 'At the end of Unit 1 and Unit 2',
   ),
   Event(
     key: UniqueKey(),
@@ -100,7 +98,6 @@ List<Event> events = [
   Event(
     key: UniqueKey(),
     title: 'Two unit tests',
-    description: 'At the end of the Unit 1 and Unit 2',
   ),
   Event(
     key: UniqueKey(),
@@ -109,7 +106,6 @@ List<Event> events = [
   Event(
     key: UniqueKey(),
     title: 'Annual Cultural Festival - Annant',
-    imageUrl: 'assets/images/annant.jpg',
   ),
   Event(
     key: UniqueKey(),
