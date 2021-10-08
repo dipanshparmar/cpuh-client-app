@@ -2,7 +2,7 @@
     package="com.example.cpuh_academic_calendar">
    <application
         android:label="cpuh_academic_calendar"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
