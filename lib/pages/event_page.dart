@@ -34,40 +34,42 @@ class EventPage extends StatelessWidget {
           event.title,
           style: TextStyle(color: Theme.of(context).backgroundColor),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.send),
-            color: Theme.of(context).iconTheme.color,
-            onPressed: () {
-              // getting today
-              DateTime today = DateTime.now();
+        actions: event.isFestival
+            ? null
+            : [
+                IconButton(
+                  icon: const Icon(Icons.send),
+                  color: Theme.of(context).iconTheme.color,
+                  onPressed: () {
+                    // getting today
+                    DateTime today = DateTime.now();
 
-              // this variable will store that whether the event day is today or not
-              bool isToday = false;
+                    // this variable will store that whether the event day is today or not
+                    bool isToday = false;
 
-              // if event has a date
-              if (event.day != null) {
-                // storing the event day
-                final eventDay = event.day;
+                    // if event has a date
+                    if (event.day != null) {
+                      // storing the event day
+                      final eventDay = event.day;
 
-                // checking if the event day is today
-                if (eventDay!.day == today.day &&
-                    eventDay.month == today.month &&
-                    eventDay.year == today.year) {
-                  isToday = true;
-                }
-              }
+                      // checking if the event day is today
+                      if (eventDay!.day == today.day &&
+                          eventDay.month == today.month &&
+                          eventDay.year == today.year) {
+                        isToday = true;
+                      }
+                    }
 
-              // creating the share message
-              // if event is today then show today if not then if there is a date then display that date else display nothing
-              final message =
-                  'Check out the event \'${event.title}\' happening in Career Point University Hamirpur ${isToday ? 'today' : event.day != null ? 'on ${DateFormat.yMMMd().format(event.day!)}' : ''}\n\nDownload the app to see all the events: <url>';
+                    // creating the share message
+                    // if event is today then show today if not then if there is a date then display that date else display nothing
+                    final message =
+                        'Check out the event \'${event.title}\' happening in Career Point University Hamirpur ${isToday ? 'today' : event.day != null ? 'on ${DateFormat.yMMMd().format(event.day!)}' : ''}\n\nDownload the app to see all the events: <url>';
 
-              // Sharing the message
-              Share.share(message);
-            },
-          ),
-        ],
+                    // Sharing the message
+                    Share.share(message);
+                  },
+                ),
+              ],
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),

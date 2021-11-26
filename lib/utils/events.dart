@@ -137,4 +137,34 @@ List<Event> events = [
     title: 'Remajor Examination',
     day: DateTime(2021, 8, 23),
   ),
+  Event(
+    key: UniqueKey(),
+    title: 'Remajor Examination',
+    day: DateTime(2021, 8, 23),
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Remajor Examination',
+    day: DateTime(2021, 8, 23),
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Remajor Examination',
+    day: DateTime(2021, 8, 23),
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Remajor Examination',
+    day: DateTime(2021, 8, 23),
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Remajor Examination',
+    day: DateTime(2021, 8, 23),
+    isFestival: true,
+  ),
 ];

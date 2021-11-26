@@ -6,6 +6,7 @@ class Event {
   final String title;
   final String description;
   final String imageUrl;
+  final bool isFestival;
 
   // constructor
   const Event({
@@ -14,5 +15,6 @@ class Event {
     required this.title,
     this.description = 'This event has no description',
     this.imageUrl = 'assets/images/default.png',
+    this.isFestival = false,
   });
 }

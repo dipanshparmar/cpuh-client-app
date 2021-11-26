@@ -42,6 +42,8 @@ class _SearchPageState extends State<SearchPage> {
       hintText = 'Search scheduled events...';
     } else if (searchType == SearchType.nonScheduledEvents) {
       hintText = 'Search non-scheduled events...';
+    } else if (searchType == SearchType.festivals) {
+      hintText = 'Search festivals...';
     }
 
     return Scaffold(
@@ -100,9 +102,12 @@ class _SearchPageState extends State<SearchPage> {
         } else if (searchType == SearchType.scheduledEvents) {
           events = object.findScheduledEventsByQuery(_searchQuery);
           noEventsFoundMessage = 'No scheduled events found!';
-        } else {
+        } else if (searchType == SearchType.nonScheduledEvents) {
           events = object.findNonScheduledEventsByQuery(_searchQuery);
           noEventsFoundMessage = 'No non-scheduled events found!';
+        } else {
+          events = object.findFestivalsByQuery(_searchQuery);
+          noEventsFoundMessage = 'No festivals found!';
         }
 
         // if no events are found then inform the user

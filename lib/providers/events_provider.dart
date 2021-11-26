@@ -92,4 +92,20 @@ class EventsProvider with ChangeNotifier {
   List<Event> get getNonScheduledEvents {
     return events.where((event) => event.day == null).toList();
   }
+
+  // method to find festivals by query
+  List<Event> findFestivalsByQuery(String query) {
+    return _events
+        .where(
+          (element) =>
+              element.isFestival &&
+              element.title.toLowerCase().contains(query.toLowerCase()),
+        )
+        .toList();
+  }
+
+  // getter to get all the festivals
+  List<Event> get getFestivals {
+    return _events.where((element) => element.isFestival).toList();
+  }
 }

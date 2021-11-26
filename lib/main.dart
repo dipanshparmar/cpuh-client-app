@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
               const ScheduledEventsPage(),
           NonScheduledEventsPage.routeName: (context) =>
               const NonScheduledEventsPage(),
+          FestivalsPage.routeName: (context) => const FestivalsPage(),
         },
       ),
     );
