@@ -139,32 +139,168 @@ List<Event> events = [
   ),
   Event(
     key: UniqueKey(),
-    title: 'Remajor Examination',
-    day: DateTime(2021, 8, 23),
+    title: 'Lohri',
+    day: DateTime(2021, 1, 13),
     isFestival: true,
   ),
   Event(
     key: UniqueKey(),
-    title: 'Remajor Examination',
-    day: DateTime(2021, 8, 23),
+    title: 'NSCB jayanti',
     isFestival: true,
   ),
   Event(
     key: UniqueKey(),
-    title: 'Remajor Examination',
-    day: DateTime(2021, 8, 23),
+    title: 'Republic day',
     isFestival: true,
   ),
   Event(
     key: UniqueKey(),
-    title: 'Remajor Examination',
-    day: DateTime(2021, 8, 23),
+    title: 'Basant panchmi',
     isFestival: true,
   ),
   Event(
     key: UniqueKey(),
-    title: 'Remajor Examination',
-    day: DateTime(2021, 8, 23),
+    title: 'Ravi Das jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Mahashivratri',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Holi',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Dhulendi',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Good Friday',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Baisakhi',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Ambedkar jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Ram Navmi',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Mahavir jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Hanuman jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Id-ul-fitr',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Budh purnima',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Id ul zuha',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Independance day',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Muharam',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Raksha bandhan',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Janmashtami',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Ganesh chatutarthi',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Anant Chaudash',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Gandhi jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Dusshera',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Id-e-milad',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Balmiki jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Diwali',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Goverdhan pooja',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Bhai dooj',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Chhath pooja',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Guru Nanak jayanti',
+    isFestival: true,
+  ),
+  Event(
+    key: UniqueKey(),
+    title: 'Christmas',
     isFestival: true,
   ),
 ];
