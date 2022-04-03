@@ -25,12 +25,18 @@ class FestivalsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          color: Theme.of(context).iconTheme.color,
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           'Festivals',
           style: TextStyle(color: Theme.of(context).backgroundColor),
         ),
         actions: [
           IconButton(
+            color: Theme.of(context).iconTheme.color,
             onPressed: () => Navigator.pushNamed(
               context,
               SearchPage.routeName,
