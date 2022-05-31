@@ -19,12 +19,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // flag to decide whether to call the fetchEvents in didChangeDependencies or not
+  bool isCalled = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    // fetching the events
-    Provider.of<EventsProvider>(context, listen: false).fetchEvents(context);
+    // if already not call then call it
+    if (!isCalled) {
+      // fetching the events
+      Provider.of<EventsProvider>(context, listen: false).fetchEvents(context);
+
+      // setting the flag to true
+      isCalled = true;
+    }
   }
 
   @override
