@@ -1,4 +1,6 @@
+import 'package:cpuh_academic_calendar/providers/events_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // widgets
 import '../widgets/widgets.dart';
@@ -17,6 +19,12 @@ class HomePage extends StatelessWidget {
     // getting the height of the device
     final height = MediaQuery.of(context).size.height;
 
+    // getting the provider
+    final eventsProvider = Provider.of<EventsProvider>(context, listen: false);
+
+    // fetching the events
+    eventsProvider.fetchEvents(context);
+
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
@@ -30,6 +38,10 @@ class HomePage extends StatelessWidget {
           ),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () => eventsProvider.fetchEvents(context),
+          ),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () => Navigator.pushNamed(

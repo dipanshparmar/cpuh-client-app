@@ -13,8 +13,8 @@ class Event {
     required this.key,
     this.day,
     required this.title,
-    this.description = 'This event has no description',
-    this.imageUrl = 'assets/images/default.png',
-    this.isFestival = false,
+    required this.description,
+    required this.imageUrl,
+    required this.isFestival,
   });
 }

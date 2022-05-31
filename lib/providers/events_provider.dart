@@ -1,17 +1,76 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 // models
 import '../models/models.dart';
-
-// utils
-import '../utils/utils.dart';
 
 class EventsProvider with ChangeNotifier {
   // selected date
   DateTime _selectedDay = DateTime.now(); // by default it will be set to today
 
   // list of events (getting from events.dart)
-  final List<Event> _events = events;
+  List<Event> _events = [];
+
+  // function to fetch the events
+  Future<void> fetchEvents(BuildContext context) async {
+    try {
+      // making the api call
+      final http.Response response =
+          await http.get(Uri.parse('http://10.0.2.2:5000/api/events/'));
+
+      // decoding the data
+      final Map data = jsonDecode(response.body);
+
+      // grabbing the events
+      final List tempEvents = data['data'];
+
+      // setting the events
+      _events = tempEvents.map((e) {
+        return Event(
+          key: UniqueKey(),
+          title: e['title'],
+          day: e['day'] != null ? getDate(e['day']) : null,
+          description: e['description'] ?? 'This event has no description',
+          imageUrl: e['imageUrl'] ?? '',
+          isFestival: e['isFestival'],
+        );
+      }).toList();
+
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Events fetched successfully!'),
+        ),
+      );
+
+      // notifying the listeners
+      notifyListeners();
+    } catch (err) {
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Couldn\'t fetch the events! Please retry.'),
+        ),
+      );
+
+      print(err);
+    }
+  }
+
+  // function to the the date in format
+  DateTime getDate(String date) {
+    // getting the values
+    List<String> splits = date.split('-');
+    String year = splits[0];
+    String month = splits[1];
+    String day = splits[2];
+
+    // returning the date
+    return DateTime(int.parse(year), int.parse(month), int.parse(day));
+  }
 
   // method to get events for the provided day
   List<Event> getEventsForDay(DateTime day) {
@@ -54,7 +113,7 @@ class EventsProvider with ChangeNotifier {
 
   // method to find events by query
   List<Event> findEventsByQuery(String query) {
-    return events
+    return _events
         .where(
             (event) => event.title.toLowerCase().contains(query.toLowerCase()))
         .toList();
@@ -62,7 +121,7 @@ class EventsProvider with ChangeNotifier {
 
   // method to find scheduled events by query
   List<Event> findScheduledEventsByQuery(String query) {
-    return events
+    return _events
         .where((event) =>
             event.title.toLowerCase().contains(query.toLowerCase()) &&
             event.day != null)
@@ -71,7 +130,7 @@ class EventsProvider with ChangeNotifier {
 
   // method to find non scheduled events by query
   List<Event> findNonScheduledEventsByQuery(String query) {
-    return events
+    return _events
         .where((event) =>
             event.title.toLowerCase().contains(query.toLowerCase()) &&
             event.day == null)
@@ -85,12 +144,12 @@ class EventsProvider with ChangeNotifier {
 
   // method to get the scheduled events
   List<Event> get getScheduledEvents {
-    return events.where((event) => event.day != null).toList();
+    return _events.where((event) => event.day != null).toList();
   }
 
   // method to get the non scheduled events
   List<Event> get getNonScheduledEvents {
-    return events.where((event) => event.day == null).toList();
+    return _events.where((event) => event.day == null).toList();
   }
 
   // method to find festivals by query

@@ -79,9 +79,9 @@ class EventPage extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                  event.imageUrl,
-                ),
+                image: event.imageUrl == ''
+                    ? const AssetImage('assets/images/default.png')
+                    : NetworkImage(event.imageUrl) as ImageProvider<Object>,
                 fit: BoxFit.cover,
               ),
             ),

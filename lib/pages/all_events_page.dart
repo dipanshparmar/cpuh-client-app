@@ -53,7 +53,7 @@ class AllEventsPage extends StatelessWidget {
               child: Text('No events yet!'),
             )
           : ListView.builder(
-              physics: const BouncingScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               itemCount: events.length,
               itemBuilder: (context, index) {
                 // current event
