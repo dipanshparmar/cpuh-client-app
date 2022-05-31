@@ -11,8 +11,21 @@ import '../pages/pages.dart';
 // utils
 import '../utils/utils.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // fetching the events
+    Provider.of<EventsProvider>(context, listen: false).fetchEvents(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +34,6 @@ class HomePage extends StatelessWidget {
 
     // getting the provider
     final eventsProvider = Provider.of<EventsProvider>(context, listen: false);
-
-    // fetching the events
-    eventsProvider.fetchEvents(context);
 
     return Scaffold(
       drawer: const MyDrawer(),
@@ -38,10 +48,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () => eventsProvider.fetchEvents(context),
-          ),
+          RefreshIcon(eventsProvider: eventsProvider),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () => Navigator.pushNamed(
@@ -89,6 +96,53 @@ class HomePage extends StatelessWidget {
           child: EventsForTheDay(),
         )
       ],
+    );
+  }
+}
+
+class RefreshIcon extends StatefulWidget {
+  const RefreshIcon({
+    Key? key,
+    required this.eventsProvider,
+  }) : super(key: key);
+
+  final EventsProvider eventsProvider;
+
+  @override
+  State<RefreshIcon> createState() => _RefreshIconState();
+}
+
+class _RefreshIconState extends State<RefreshIcon>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RotationTransition(
+      turns: Tween<double>(begin: 0, end: 1).animate(_controller),
+      child: IconButton(
+        icon: const Icon(Icons.refresh),
+        onPressed: () {
+          // looping the icon
+          _controller.repeat();
+
+          // fetching the events
+          widget.eventsProvider.fetchEvents(context).whenComplete(() {
+            // stop the animation
+            _controller.reset();
+          });
+        },
+      ),
     );
   }
 }
